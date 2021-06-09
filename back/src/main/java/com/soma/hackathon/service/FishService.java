@@ -14,10 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
+import static org.springframework.util.StringUtils.*;
 
 @Service
 @RequiredArgsConstructor
@@ -33,16 +38,19 @@ public class FishService {
     public List<FishResponse> getFishes(String keyword) {
 
         List<Fish> fishes = null;
-        if ("".equals(keyword) || keyword == null) {
+        if (!hasText(keyword)) {
             fishes = fishRepository.findAll();
         } else {
             fishes = fishRepository.findByFishNameIsContaining(keyword);
         }
 
-        List<FishResponse> response = new ArrayList<>();
-        fishes.forEach(f -> {
-            response.add(modelMapper.map(f, FishResponse.class));
-        });
+//        List<FishResponse> response = new ArrayList<>();
+//        fishes.forEach(f -> {
+//            response.add(modelMapper.map(f, FishResponse.class));
+//        });
+        List<FishResponse> response = fishes.stream()
+                .map(f -> new FishResponse(f))
+                .collect(toList());
 
         return response;
     }

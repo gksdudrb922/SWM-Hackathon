@@ -13,14 +13,16 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok:1.18.10'
-	annotationProcessor 'org.projectlombok:lombok:1.18.10'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8'
+	runtimeOnly 'com.h2database:h2'
 }
 
 test {

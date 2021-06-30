@@ -4,7 +4,7 @@
 
 > SWM x GOORM IDE
 
-![프로토](readmeImg/프로토타입.jpg)
+![프로토](https://github.com/SWM-HackathonProject/front/blob/master/readmeImg/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85.jpg)
 
 > https://padakpadak-front.run.goorm.io/
 
